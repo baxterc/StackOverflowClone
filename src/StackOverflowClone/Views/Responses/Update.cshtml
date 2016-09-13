@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Create Questions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+
+@model StackOverflowClone.Models.Response
+
+@using (Html.BeginForm())
+{
+    @Html.EditorFor(Model => Model.Title)
+    @Html.LabelFor(Model => Model.Title)
+
+    @Html.EditorFor(Model => Model.MainText)
+    @Html.LabelFor(Model => Model.MainText)
+
+    <input type="submit" value="Submit" class="btn btn-default" />
+}

@@ -1,0 +1,13 @@
+﻿@model StackOverflowClone.Models.Response
+
+@using (Html.BeginForm("Create", "Responses"))
+{
+    <label>Title</label>
+    @Html.TextBoxFor(model => model.Title)
+    <label>Response</label>
+    @Html.TextBoxFor(model => model.MainText)
+
+    <input type="hidden" name="QuestionId" id="QuestionId" value="@ViewBag.QuestionId" />
+
+    <input type="submit" value="Submit" />
+}

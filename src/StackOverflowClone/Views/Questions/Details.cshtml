@@ -1,0 +1,26 @@
+﻿@model StackOverflowClone.Models.Question
+
+@{
+    ViewData["Title"] = "Create Questions";
+    ViewData["QuestionId"] = Model.Id;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+
+<h3>@Html.DisplayFor(m => m.Title)</h3>
+<p>@Html.DisplayFor(m => m.MainText)</p>
+
+@await Component.InvokeAsync("ResponseForm", new { questionId = Model.Id})
+
+<ul>
+    @foreach (var listItem in Model.Responses)
+    {
+        <li>
+            <h4>@Html.DisplayFor(r => listItem.Title)</h4>
+            <p>@Html.ActionLink("Edit", "Update", "Responses", new { id = listItem.Id }) |
+             @Html.ActionLink("Delete", "Delete", "Responses", new { id = listItem.Id })</p>
+            <p>@Html.DisplayFor(r => listItem.MainText)</p>
+        </li>
+        }
+</ul>

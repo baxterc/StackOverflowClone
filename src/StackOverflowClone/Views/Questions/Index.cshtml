@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "All Questions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Security.Claims
+
+@model IEnumerable<StackOverflowClone.Models.Question>
+
+<h3>All Questions</h3>
+
+<ul>
+    @foreach (var listItem in Model)
+    {
+        <li>@Html.ActionLink(listItem.Title, "Details", new { id = listItem.Id }) | Asked by @Html.DisplayFor(q => listItem.User.UserName)</li>
+    }
+</ul>
